@@ -4,6 +4,13 @@
 
 Consume Vuex actions as Observables using RxJS 5, inspired by [redux-observable](https://github.com/redux-observable/redux-observable).
 
+## Development
+
+```bash
+# Start development server
+npm run dev
+```
+
 ## Usage
 
 ``` js
