@@ -14,3 +14,22 @@ export function observableAction (init) {
     return $output
   }
 }
+
+/**
+ * 
+ * @param { Array<Epic> } epics 
+ */
+export function createObservablePlugin (epics) {
+  return store => {
+    const action$ = new Subject();
+    const commit = (action) => {
+      store.commit(action);
+      return action;
+    }
+    epics.forEach(epic => epic(action$, { store, commit }))
+
+    store.subscribe((mutation, state) => {
+      action$.next(mutation)
+    })
+  }
+}
